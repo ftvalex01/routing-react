@@ -2,19 +2,33 @@ import React from 'react'
 
 const Nosotros = () => {
 
-    const[count,setCounter]
+    
+
+    const [equipo,setEquipo] = React.useState(null)
+
 
     React.useEffect(()=>{
-         document.title=`you clicked ${count} times`
-    })
-    aumentar=()=>{
-        (count+1)
+        llamadaApi()
+    }, [])
+
+    const llamadaApi = async()=>{
+       const data = await fetch('https://jsonplaceholder.typicode.com/users')
+       const users = await data.json()
+       setEquipo(users)
     }
+    
 
     return (
         <div>
             Soy la pagina de nosotros
-            <button onClick={()=>setCounter()}></button>
+            <ul>
+            {
+                equipo.map(item =>(
+                    <li key="item.id">{item.name}-{item.email}</li>
+                )
+                 )
+            }
+            </ul>
         </div>
     )
 }
