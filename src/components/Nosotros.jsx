@@ -4,7 +4,7 @@ const Nosotros = () => {
 
     
 
-    const [equipo,setEquipo] = React.useState(null)
+    const [equipo,setEquipo] = React.useState([])
 
 
     React.useEffect(()=>{
@@ -24,7 +24,7 @@ const Nosotros = () => {
             <ul>
             {
                 equipo.map(item =>(
-                    <li key="item.id">{item.name}-{item.email}</li>
+                    <li key={item.id}>{item.name}-{item.email}</li>
                 )
                  )
             }
